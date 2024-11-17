@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu tỉnh</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script>
+        $(document).ready(function() {
+            // Xử lý nhấp chuột cho dropdown "Viết Ngay"
+            $('#write-now').on('click', function(e) {
+                e.preventDefault(); // Ngăn chặn nhảy trang
+                var $dropdown = $(this).siblings('.header-navbar-list-blog');
+                // Nếu dropdown đang mở, ẩn nó; nếu không, ẩn các dropdown khác và hiện dropdown này
+                if ($dropdown.is(':visible')) {
+                    $dropdown.hide();
+                } else {
+                    $('.header-navbar-list-blog, .header-navbar-list-item-notification, .header-navbar-list-user').hide();
+                    $dropdown.show();
+                }
+            });
+    
+            // Xử lý nhấp chuột cho dropdown "Thông Báo"
+            $('.header-navbar-list-item-noti > a').on('click', function(e) {
+                e.preventDefault(); // Ngăn chặn nhảy trang
+                var $dropdown = $(this).siblings('.header-navbar-list-item-notification');
+                // Nếu dropdown đang mở, ẩn nó; nếu không, ẩn các dropdown khác và hiện dropdown này
+                if ($dropdown.is(':visible')) {
+                    $dropdown.hide();
+                } else {
+                    $('.header-navbar-list-blog, .header-navbar-list-item-notification, .header-navbar-list-user').hide();
+                    $dropdown.show();
+                }
+            });
+    
+            // Xử lý nhấp chuột cho dropdown "Người Dùng"
+            $('#user-icon').on('click', function(e) {
+                e.preventDefault(); // Ngăn chặn nhảy trang
+                var $dropdown = $(this).siblings('.header-navbar-list-user');
+                // Nếu dropdown đang mở, ẩn nó; nếu không, ẩn các dropdown khác và hiện dropdown này
+                if ($dropdown.is(':visible')) {
+                    $dropdown.hide();
+                } else {
+                    $('.header-navbar-list-blog, .header-navbar-list-item-notification, .header-navbar-list-user').hide();
+                    $dropdown.show();
+                }
+            });
+    
+            // Hiện modal tìm kiếm khi nhấp vào ô tìm kiếm
+            $('#searchBox').on('click', function(e) {
+                e.preventDefault(); // Ngăn chặn nhảy trang
+                $('#searchModal').modal('show');
+            });
+    
+            // Ẩn dropdown khi nhấp ra ngoài
+            $(document).on('click', function(event) {
+                if (!$(event.target).closest('.header-navbar-list-item').length) {
+                    $('.header-navbar-list-blog, .header-navbar-list-item-notification, .header-navbar-list-user').hide();
+                }
+            });
+        });
+        
+        $(document).ready(function(){
+    // Lặp qua tất cả các item trong carousel
+    
+});
+    </script>
+</head>
+<body>
+    <header id="header">
+        <div class="container-fluid">
+            <div class="header-logo">
+                <a href="" class="header-logo-link">
+                    <img src="/assets/img/logo-new.jpg" alt="" class="header-logo-img">
+                </a>
+            </div>
+            <div class="header-navbar">
+                <div class="header-navbar-search" id="searchBox">
+                    <label for="" class="header-navbar-search-label">
+                        <span class="header-navbar-search-label-text">
+                            Bạn muốn đi đâu?
+                        </span>
+                        <div class="header-navbar-search-box">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </label>
+                </div>
+                
+                <div class="header-navbar-right">
+                    <ul class="header-navbar-list">
+                        <li class="header-navbar-list-item"><a href="https://fullstack.edu.vn/" class="header-navbar-list-item-link">
+                            <i class="fas fa-globe-asia "></i>
+                            <p class="header-navbar-list-item-content">Điểm Đến</p>
+                        </a></li>
+                        <li class="header-navbar-list-item header-navbar-list-item-blog">
+                            <a href="#" class="header-navbar-list-item-link" id="write-now">
+                                <i class="fas fa-pen-fancy"></i>
+                                <p class="header-navbar-list-item-content">Viết Ngay</p>
+                            </a>
+                            <ul class="header-navbar-list-blog" style="display: none;">
+                                <li class="header-navbar-list-blog-item">
+                                    <a href="write-blog.html" class="header-navbar-list-blog-link header-navbar-list-blog-link-main">
+                                        <i class="far fa-edit"></i>
+                                        <p class="header-navbar-list-blog-content">Chia sẻ trải nghiệm & review</p>
+                                    </a>
+                                </li>
+                                <li class="header-navbar-list-blog-item">
+                                    <a href="write-qa.html" class="header-navbar-list-blog-link">
+                                        <i class="far fa-question-circle"></i>
+                                        <p class="header-navbar-list-blog-content">Hỏi đáp du lịch</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="header-navbar-list-item header-navbar-list-item-noti"><a href="#" class="header-navbar-list-item-link">
+                            <i class="fas fa-bell"></i>
+                            <p class="header-navbar-list-item-content">Thông Báo</p>
+                        </a>
+                        <div class="header-navbar-list-item-notification">
+                            <div class="header-navbar-list-item-notification-menu">
+                                <button class="btn btn-default fl-1 bn active">Tất cả </button>
+                                <button class="btn btn-default fl-1 bn">Ưa thích </button>
+                                <button class="btn btn-default fl-1 bn">Gần đây </button>
+                            </div>
+                            <ul class="header-navbar-list-item-notification-content" id="notification-icon">
+                                <li class="notification-item">
+                                    <a href="" class="notification-item-link">
+                                        <div class="notification-item-img">
+                                            <img src="assets/img/avata.jpg" alt="">
+                                        </div>
+                                        <div class="notification-item-content">
+                                            <p class="notification-item-content-text">
+                                                Bài học Pass by value và Pass by reference là gì? mới được thêm vào.
+                                            </p>
+                                            <span class="notification-item-date">2 tháng trước</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-item">
+                                    <a href="" class="notification-item-link">
+                                        <div class="notification-item-img">
+                                            <img src="assets/img/avata.jpg" alt="">
+                                        </div>
+                                        <div class="notification-item-content">
+                                            <p class="notification-item-content-text">
+                                                Bài học Pass by value và Pass by reference là gì? mới được thêm vào.
+                                            </p>
+                                            <span class="notification-item-date">2 tháng trước</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-item">
+                                    <a href="" class="notification-item-link">
+                                        <div class="notification-item-img">
+                                            <img src="assets/img/avata.jpg" alt="">
+                                        </div>
+                                        <div class="notification-item-content">
+                                            <p class="notification-item-content-text">
+                                                Bài học Pass by value và Pass by reference là gì? mới được thêm vào.
+                                            </p>
+                                            <span class="notification-item-date">2 tháng trước</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-item">
+                                    <a href="" class="notification-item-link">
+                                        <div class="notification-item-img">
+                                            <img src="assets/img/avata.jpg" alt="">
+                                        </div>
+                                        <div class="notification-item-content">
+                                            <p class="notification-item-content-text">
+                                                Bài học Pass by value và Pass by reference là gì? mới được thêm vào.
+                                            </p>
+                                            <span class="notification-item-date">2 tháng trước</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        </li>
+                        <li class="header-navbar-list-item header-navbar-list-item-user">
+                            <div class="header-navbar-list-item-link header-navbar-list-item-link-user" id="user-icon">
+                                <img class="header-navbar-list-item-user-img" src="/assets/img/avata.jpg" alt="">
+                                <p class="header-navbar-list-item-content">Hiếu</p>
+                            </div>
+                            <ul class="header-navbar-list-user">
+                                <li class="header-navbar-list-user-item">
+                                    <a href="home-user.html" class="header-navbar-list-user-link">Trang cá nhân</a>
+                                </li>
+                                <li class="header-navbar-list-user-item">
+                                    <a href="sign.html" class="header-navbar-list-user-link header-navbar-list-user-link-out">Đăng xuất</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- model nếu code header copy cả cái này -->
+    <div class="modal fade" id="searchModal" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <input type="text" class="form-control" placeholder="Địa điểm bạn muốn tìm?" aria-label="Tìm kiếm">
+                    <div class="modal-header-icon">
+    
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <!-- Sponsored Item -->
+                    <div class="modal-body-service ">
+                        <img src="/assets/img/avata.jpg" alt="sponsor" class="modal-body-service-img">
+                        <div class="">
+                            <strong>Dịch Vụ Làm Mới & Làm Lại Hộ Chiếu</strong>
+                            
+                            <p class="modal-body-service-content">Nhanh, Uy Tín, Online, Giá Rẻ <span class="modal-body-service-img-des">Được Tài Trợ</span></p>
+                        </div>
+                    </div>
+    
+                    <!-- Popular Searches Section -->
+                    <h6 class="modal-content-search">Tìm kiếm nhiều</h6>
+                    <div class="row">
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                         
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item"><div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="blog-box-main">
+    <div class="container blog-box">
+        <aside class="row row-main">
+            <div class="col-xl-3 blog-site-left">
+                <div class="blog-site-name">
+                    <li class="blog-item"><a href="" class="blog-item-link blog-item-link-first-child">Giới thiệu <span class="blog-item-link-right">></span></a></li>
+                    <li class="blog-item"><a href="" class="blog-item-link">Kinh nghiệm du lịch    <span class="blog-item-link-right">></span></a></li>
+                    <div class="blog-site-name-header">
+                        Gia Lai
+                    </div>
+                </div>
+                <!-- <div class="blog-site">
+                    <h3 class="blog-header">
+                        Địa điểm
+                    </h3>
+                    
+                </div> -->
+            </div>
+            <div class="col-xl-9 blog-des"> 
+                <img src="https://media.gody.vn//images/gia-lai/quang-truong-dai-doan-ket/11-2016/20161102025548-quang-truong-dai-doan-ket-gody(7).jpg" alt="" class="blog-des-img">
+                <div class="blog-des-box">
+                    <h3 class="blog-des-title">
+                        Giới thiệu về Gia Lai
+                    </h3>
+                    <div class="blog-des-box-user">
+                        <div class="blog-des-box-user-box">
+                            <img src="/assets/img/avata.jpg" alt="" class="blog-des-box-user-box-img">
+                            <p class="blog-des-box-user-box-name">
+                                Admin 
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="blog-des-first-box">
+                    <div class="blog-des-second-box-line">
+                        Trong chuyến hành trình này, tôi đã chọn di chuyển bằng xe máy để có thể ngắm trọn vẹn các cảnh đẹp và cung đường đèo Violak. Khi mới đặt chân đến Măng Đen, đập vào đôi mắt tôi là vẻ đẹp mộc mạc và bình yên của thị trấn bé nhỏ này. Không có sự ồn ào, khói bụi, không có những tòa nhà cao tầng. Tội tự nghĩ rằng đây chính là nơi bản thân đang tìm kiếm.
+                    </div>
+                   
+                </div>
+                
+            </div>
+        </aside>
+    </div>
+    </main>
+    <footer style="margin-top: 50px;">
+        <div class="container">
+            <div class="row footer-body-box">
+                <div class="col-xl-4">
+                    <div class="footer-body">
+                        <img src="/assets/img/logo-new.jpg" alt="" class="footer-body-img">
+                        
+                        <div class="footer-contact-list">
+                            <a href="" class="footer-contact-link footer-contact-link-fb">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="" class="footer-contact-link footer-contact-link-yt">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="" class="footer-contact-link footer-contact-link-ig">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <h4 class="footer-body-header">Về Gody</h4>
+                        <ul class="footer-body-list">
+                        <p class="footer-item-link">CÔNG TY CỔ PHẦN GODY</p>
+                        <p class="footer-item-link">2/24 Đoàn Thị Điểm, Phường 01, Quận Phú Nhuận, Thành phố Hồ Chí Minh, Việt Nam</p>
+                        </ul>
+                    
+                </div>
+                <div class="col-xl-4">
+                    <h4 class="footer-body-header">Liên hệ</h4>
+                        <ul class="footer-body-list">
+                            <p class="footer-item-link">Hotline: 0985.172.470</p>
+                        <p class="footer-item-link">Email: hi@gody.vn</p>  
+                        </ul>
+                    
+                </div>
+                
+                
+            </div>
+          
+            
+        </div>
+        
+        <div class="container-fluid footer-end">
+            © Toàn bộ bản quyền thuộc Nhóm 1. Cấm sao chép dưới mọi hình thức.
+        </div>
+    </footer> 
+
+</body>
+</html>

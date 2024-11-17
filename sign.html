@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký/Đăng nhập</title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script>    
+        function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+function validatePassword(password) {
+    return password.length >= 6;
+}
+
+function showError(element, message) {
+    const errorSpan = element.parentElement.querySelector('span'); // Target the span inside the input box
+    errorSpan.className = 'text-danger'; // Add error class
+    errorSpan.textContent = message; // Set the error message
+}
+
+function clearErrors(form) {
+    const errorSpans = form.querySelectorAll('.text-danger');
+    errorSpans.forEach(span => {
+        span.className = ''; // Clear the error class
+        span.textContent = ''; // Clear the error message
+    });
+}
+
+function validateLogin(event) {
+    event.preventDefault();
+    const email = document.getElementById('login-email');
+    const password = document.getElementById('login-password');
+    clearErrors(event.target);
+    
+    let valid = true;
+
+    if (!validateEmail(email.value)) {
+        showError(email, 'Email không hợp lệ');
+        valid = false;
+    }
+    if (!validatePassword(password.value)) {
+        showError(password, 'Mật khẩu phải có ít nhất 6 ký tự');
+        valid = false;
+    }
+    
+    if (valid) {
+        event.target.submit();
+    }
+}
+
+function validateRegister(event) {
+    event.preventDefault();
+    const name = document.getElementById('register-name');
+    const email = document.getElementById('register-email');
+    const password = document.getElementById('register-password');
+    const confirmPassword = document.getElementById('confirm-password');
+    clearErrors(event.target);
+
+    let valid = true;
+
+    if (name.value.trim() === '') {
+        showError(name, 'Họ và tên không được để trống');
+        valid = false;
+    }
+    if (!validateEmail(email.value)) {
+        showError(email, 'Email không hợp lệ');
+        valid = false;
+    }
+    if (!validatePassword(password.value)) {
+        showError(password, 'Mật khẩu phải có ít nhất 6 ký tự');
+        valid = false;
+    }
+    if (password.value !== confirmPassword.value) {
+        showError(confirmPassword, 'Mật khẩu không khớp');
+        valid = false;
+    }
+
+    if (valid) {
+        event.target.submit();
+    }
+}
+
+function validateForgotPassword(event) {
+    event.preventDefault();
+    const email = document.getElementById('forgot-email');
+    clearErrors(event.target);
+
+    if (!validateEmail(email.value)) {
+        showError(email, 'Email không hợp lệ');
+    } else {
+        event.target.submit();
+    }
+}
+
+// Function to switch between forms
+function switchForm(targetFormId) {
+    const forms = document.querySelectorAll('.form');
+    forms.forEach(form => {
+        form.classList.remove('active');
+    });
+    document.getElementById(targetFormId).classList.add('active');
+}
+
+    </script>
+</head>
+<body>
+    <div class="auth-container">
+        <div id="login-form" class="form active">
+            <h2 class="form-header">Đăng Nhập</h2>
+            <p class="form-header-des">Tham gia ngay cộng đồng du lịch hàng đầu Việt Nam và tận hưởng những điều tuyệt vời nhất từ Gody</p>
+
+            <form action="/login" method="POST" onsubmit="validateLogin(event)">
+                
+                <label for="login-email">Đăng nhập bằng Email</label>
+                <div class="input-box">
+                    <input type="email" id="login-email" name="email" placeholder="Email">
+                    <span>
+                        
+                    </span>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="login-password" name="password" placeholder="Mật khẩu">
+                    <span>
+
+                    </span>
+                </div>
+
+                <div class="options">
+                    <div class="options-box">
+                        <input type="checkbox" id="remember-login" name="remember" class="check-box">
+                        <label for="remember-login" class="remember-login-label">Ghi nhớ đăng nhập</label>
+                    </div>
+                    <a href="#" class="switch-form switch-form-remember" onclick="switchForm('forgot-form')">Quên mật khẩu?</a>
+                </div>
+                <div class="switch-form-footer">
+                    <button class="btn btn-register" onclick="switchForm('register-form')">Đăng ký</button>
+                    <button type="submit" class="login-btn btn">ĐĂNG NHẬP</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="register-form" class="form">
+            <h2 class="form-header">Đăng Ký</h2>
+            <p class="form-header-des">Đăng ký để trở thành thành viên của cộng đồng Gody.</p>
+
+            <form action="/register" method="POST" onsubmit="validateRegister(event)">
+                <div class="input-box">
+                    <input type="text" id="register-name" name="name" placeholder="Họ Và Tên" class="register-name">
+                <span></span>
+                </div>
+                <div class="input-box">
+                    <input type="email" id="register-email" name="email" placeholder="Email" >
+                <span></span>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="register-password" name="password" placeholder="Mật khẩu" >
+                <span></span>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Xác nhận mật khẩu" >
+                <span></span>
+                </div>
+                <div class="input-box-story">
+
+                    <input type="text" name="" id="" placeholder="Viết tiểu sử">
+                </div>
+                
+                <div class="options-box">
+                    <input type="checkbox" id="remember-login" name="remember" class="check-box">
+                    <label for="remember-login" class="remember-login-label">Tôi đồng ý với các <span class="remember-login-label-taget">quy định</span> của gody.vn</label>
+                </div>
+                <div class="switch-form-footer">
+                    <button class="btn btn-register" onclick="switchForm('login-form')">Đăng nhập</button>
+                    <button type="submit" class="login-btn btn">ĐĂNG KÝ</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="forgot-form" class="form">
+            <h2 class="form-header">Quên Mật Khẩu</h2>
+            <p class="form-header-des">Nhập email của bạn để nhận liên kết đặt lại mật khẩu.</p>
+
+            <form action="/forgot-password" method="POST" onsubmit="validateForgotPassword(event)">
+                <label for="forgot-email">Email</label>
+                <div class="input-box">
+                    <input type="email" id="forgot-email" name="email" placeholder="Email" >    
+                    <span>
+
+                    </span>
+                </div>
+                <div class="switch-form-footer">
+                    <button type="submit" class="forgot-btn btn btn-register">Gửi liên kết</button>
+                    <button class="btn btn-register login-btn btn" onclick="switchForm('login-form')">Quay lại đăng nhập</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-right">
+            <ul class="form-right-list">
+                <li class="form-right-item">
+                    <a href="" class="form-right-link">
+                        <div class="form-link-icon">
+                            <i class="fas fa-skiing-nordic"></i>
+                        </div>
+                        <div class="form-link-content">
+                            <div class="form-link-content-header">
+                                Khám phá
+                            </div>
+                            <p class="form-link-content-text">
+                                Vi vu khám phá với hơn 30,000 điểm đến tại Gody và đánh giá chi tiết từ thành viên.
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="form-right-item">
+                    <a href="" class="form-right-link">
+                        <div class="form-link-icon">
+                            <i class="fas fa-camera-retro"></i>
+                        </div>
+                        <div class="form-link-content">
+                            <div class="form-link-content-header">
+                                Cảm hứng
+                            </div>
+                            <p class="form-link-content-text">
+                                Lấy cảm hứng "dịch chuyển" từ hàng ngàn bài chia sẻ kinh nghiệm du lịch, du lịch qua ống kính ... mỗi ngày.
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="form-right-item">
+                    <a href="" class="form-right-link">
+                        <div class="form-link-icon">
+                            <i class="fas fa-map-marked"></i>
+                        </div>
+                        <div class="form-link-content">
+                            <div class="form-link-content-header">
+                                
+                            Lập hành trình
+                            </div>
+                            <p class="form-link-content-text">
+                                Tiện lợi, dễ dàng, tiết kiệm thời gian với khả năng lập hành trình du lịch chi tiết.
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="form-right-item">
+                    <a href="" class="form-right-link">
+                        <div class="form-link-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="form-link-content">
+                            <div class="form-link-content-header">                              
+                                Cộng đồng sẻ chia
+                            </div>
+                            <p class="form-link-content-text">
+                                Cùng giữ lại những kỉ niệm, khoảnh khắc và trải nghiệm du lịch tuyệt vời nhất với Gody.
+                            </p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

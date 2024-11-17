@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang cá nhân</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script>
+        $(document).ready(function() {
+            // Xử lý nhấp chuột cho dropdown "Viết Ngay"
+            $('#write-now').on('click', function(e) {
+                e.preventDefault(); // Ngăn chặn nhảy trang
+                var $dropdown = $(this).siblings('.header-navbar-list-blog');
+                // Nếu dropdown đang mở, ẩn nó; nếu không, ẩn các dropdown khác và hiện dropdown này
+                if ($dropdown.is(':visible')) {
+                    $dropdown.hide();
+                } else {
+                    $('.header-navbar-list-blog, .header-navbar-list-item-notification, .header-navbar-list-user').hide();
+                    $dropdown.show();
+                }
+            });
+    
+            // Xử lý nhấp chuột cho dropdown "Thông Báo"
+            $('.header-navbar-list-item-noti > a').on('click', function(e) {
+                e.preventDefault(); // Ngăn chặn nhảy trang
+                var $dropdown = $(this).siblings('.header-navbar-list-item-notification');
+                // Nếu dropdown đang mở, ẩn nó; nếu không, ẩn các dropdown khác và hiện dropdown này
+                if ($dropdown.is(':visible')) {
+                    $dropdown.hide();
+                } else {
+                    $('.header-navbar-list-blog, .header-navbar-list-item-notification, .header-navbar-list-user').hide();
+                    $dropdown.show();
+                }
+            });
+    
+            // Xử lý nhấp chuột cho dropdown "Người Dùng"
+            $('#user-icon').on('click', function(e) {
+                e.preventDefault(); // Ngăn chặn nhảy trang
+                var $dropdown = $(this).siblings('.header-navbar-list-user');
+                // Nếu dropdown đang mở, ẩn nó; nếu không, ẩn các dropdown khác và hiện dropdown này
+                if ($dropdown.is(':visible')) {
+                    $dropdown.hide();
+                } else {
+                    $('.header-navbar-list-blog, .header-navbar-list-item-notification, .header-navbar-list-user').hide();
+                    $dropdown.show();
+                }
+            });
+    
+            // Hiện modal tìm kiếm khi nhấp vào ô tìm kiếm
+            $('#searchBox').on('click', function(e) {
+                e.preventDefault(); // Ngăn chặn nhảy trang
+                $('#searchModal').modal('show');
+            });
+    
+            // Ẩn dropdown khi nhấp ra ngoài
+            $(document).on('click', function(event) {
+                if (!$(event.target).closest('.header-navbar-list-item').length) {
+                    $('.header-navbar-list-blog, .header-navbar-list-item-notification, .header-navbar-list-user').hide();
+                }
+            });
+        });
+        
+        $(document).ready(function(){
+    // Lặp qua tất cả các item trong carousel
+    
+});
+    </script>
+</head>
+<body>
+    <header id="header">
+        <div class="container-fluid">
+            <div class="header-logo">
+                <a href="" class="header-logo-link">
+                    <img src="/assets/img/logo-new.jpg" alt="" class="header-logo-img">
+                </a>
+            </div>
+            <div class="header-navbar">
+                <div class="header-navbar-search" id="searchBox">
+                    <label for="" class="header-navbar-search-label">
+                        <span>
+                            Bạn muốn đi đâu?
+                        </span>
+                        <div class="header-navbar-search-box">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </label>
+                </div>
+                
+                <div class="header-navbar-right">
+                    <ul class="header-navbar-list">
+                        <li class="header-navbar-list-item"><a href="https://fullstack.edu.vn/" class="header-navbar-list-item-link">
+                            <i class="fas fa-globe-asia "></i>
+                            <p class="header-navbar-list-item-content">Điểm Đến</p>
+                        </a></li>
+                        
+                        <li class="header-navbar-list-item header-navbar-list-item-blog">
+                            <a href="#" class="header-navbar-list-item-link" id="write-now">
+                                <i class="fas fa-pen-fancy"></i>
+                                <p class="header-navbar-list-item-content">Viết Ngay</p>
+                            </a>
+                            <ul class="header-navbar-list-blog" style="display: none;">
+                                <li class="header-navbar-list-blog-item">
+                                    <a href="write-blog.html" class="header-navbar-list-blog-link header-navbar-list-blog-link-main">
+                                        <i class="far fa-edit"></i>
+                                        <p class="header-navbar-list-blog-content">Chia sẻ trải nghiệm & review</p>
+                                    </a>
+                                </li>
+                                <li class="header-navbar-list-blog-item">
+                                    <a href="write-qa.html" class="header-navbar-list-blog-link">
+                                        <i class="far fa-question-circle"></i>
+                                        <p class="header-navbar-list-blog-content">Hỏi đáp du lịch</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="header-navbar-list-item header-navbar-list-item-noti"><a href="#" class="header-navbar-list-item-link">
+                            <i class="fas fa-bell"></i>
+                            <p class="header-navbar-list-item-content">Thông Báo</p>
+                        </a>
+                        <div class="header-navbar-list-item-notification">
+                            <div class="header-navbar-list-item-notification-menu">
+                                <button class="btn btn-default fl-1 bn active">Tất cả </button>
+                                <button class="btn btn-default fl-1 bn">Ưa thích </button>
+                                <button class="btn btn-default fl-1 bn">Gần đây </button>
+                            </div>
+                            <ul class="header-navbar-list-item-notification-content" id="notification-icon">
+                                <li class="notification-item">
+                                    <a href="" class="notification-item-link">
+                                        <div class="notification-item-img">
+                                            <img src="assets/img/avata.jpg" alt="">
+                                        </div>
+                                        <div class="notification-item-content">
+                                            <p class="notification-item-content-text">
+                                                Bài học Pass by value và Pass by reference là gì? mới được thêm vào.
+                                            </p>
+                                            <span class="notification-item-date">2 tháng trước</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-item">
+                                    <a href="" class="notification-item-link">
+                                        <div class="notification-item-img">
+                                            <img src="assets/img/avata.jpg" alt="">
+                                        </div>
+                                        <div class="notification-item-content">
+                                            <p class="notification-item-content-text">
+                                                Bài học Pass by value và Pass by reference là gì? mới được thêm vào.
+                                            </p>
+                                            <span class="notification-item-date">2 tháng trước</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-item">
+                                    <a href="" class="notification-item-link">
+                                        <div class="notification-item-img">
+                                            <img src="assets/img/avata.jpg" alt="">
+                                        </div>
+                                        <div class="notification-item-content">
+                                            <p class="notification-item-content-text">
+                                                Bài học Pass by value và Pass by reference là gì? mới được thêm vào.
+                                            </p>
+                                            <span class="notification-item-date">2 tháng trước</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-item">
+                                    <a href="" class="notification-item-link">
+                                        <div class="notification-item-img">
+                                            <img src="assets/img/avata.jpg" alt="">
+                                        </div>
+                                        <div class="notification-item-content">
+                                            <p class="notification-item-content-text">
+                                                Bài học Pass by value và Pass by reference là gì? mới được thêm vào.
+                                            </p>
+                                            <span class="notification-item-date">2 tháng trước</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        </li>
+                        <li class="header-navbar-list-item header-navbar-list-item-user">
+                            <div class="header-navbar-list-item-link header-navbar-list-item-link-user" id="user-icon">
+                                <img class="header-navbar-list-item-user-img" src="/assets/img/avata.jpg" alt="">
+                                <p class="header-navbar-list-item-content">Hiếu</p>
+                            </div>
+                            <ul class="header-navbar-list-user">
+                                <li class="header-navbar-list-user-item">
+                                    <p class="header-navbar-list-user-link">Trang cá nhân</p>
+                                </li>
+                                <li class="header-navbar-list-user-item">
+                                    <a href="sign.html" class="header-navbar-list-user-link header-navbar-list-user-link-out">Đăng xuất</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- model nếu code header copy cả cái này -->
+    <div class="modal fade" id="searchModal" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <input type="text" class="form-control" placeholder="Địa điểm bạn muốn tìm?" aria-label="Tìm kiếm">
+                    <div class="modal-header-icon">
+    
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <!-- Sponsored Item -->
+                    <div class="modal-body-service ">
+                        <img src="/assets/img/avata.jpg" alt="sponsor" class="modal-body-service-img">
+                        <div class="">
+                            <strong>Dịch Vụ Làm Mới & Làm Lại Hộ Chiếu</strong>
+                            
+                            <p class="modal-body-service-content">Nhanh, Uy Tín, Online, Giá Rẻ <span class="modal-body-service-img-des">Được Tài Trợ</span></p>
+                        </div>
+                    </div>
+    
+                    <!-- Popular Searches Section -->
+                    <h6 class="modal-content-search">Tìm kiếm nhiều</h6>
+                    <div class="row">
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                         
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item">
+                            <div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                        <a class="col-sm-3 model-content-search-item"><div class="model-content-search-avatar">
+                            <img src="/assets/img/avata.jpg" alt="" class ="model-content-search-avatar-img">
+                        </div>
+                        <p class="model-header-search-content-text">Phú quốc</p>
+                    </a>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="home-user-main">
+        <div class="container home-user">
+            <div class="row">
+                <div class="col-xl-3 home-user-left-col">
+                    <div class="home-user-left">
+                        <div class="home-user-left-des">
+                            <img src="/assets/img/avata.jpg" alt="" class="home-user-left-des-img">
+                            <p class="home-user-left-des-name">
+                                Nguyễn Trung hiếu
+                            </p>
+                            <a class="home-user-left-des-text">
+                                Viết đôi dòng giới thiệu về bản thân <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 home-user-right-col">
+                    <div class="home-user-right-box-img">
+                        <img src="https://h3jd9zjnmsobj.vcdn.cloud/public/v7/banner-profile.png" alt="" class="home-user-right-img">
+                        <a href="" class="home-user-right-box-edit-user"><i class="fas fa-pencil-alt"></i> Chỉnh sữa trang cá nhân</a>
+                    </div>
+                    <div class="home-user-right-nav">
+                        <ul class="home-user-right-nav-list">
+                            <li class="home-user-right-nav-list-item"><a href="" class="home-user-right-nav-list-link active">Bài Viết</a></li>
+                            <li class="home-user-right-nav-list-item"><a href="qa.html" class="home-user-right-nav-list-link">Hỏi Đáp</a></li>
+                        </ul>
+                    </div>
+                    <ul class="box-list-blog">
+                        <li class="box-list-blog-item">
+                            <div class="box-list-blog-item-img">
+                                <img src="/assets/img/hinh-nen-thien-nhien.jpg" alt="">
+                            </div>
+                            <div class="box-list-blog-main">
+                                <div class="box-list-blog-title">
+                                    <h4 class="box-list-blog-header">Anh Thien nhien</h4>
+                                    <div class="box-list-blog-right">
+                                        <div class="box-list-blog-right-edit">
+                                            <a class="box-list-blog-right-icon">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-list-blog-item-content">
+                                    <p class="box-list-blog-item-text">Tính tỷ lệ sinh viên có người yêu và ước lượng khoảng tin cậy 95 cho tỷ lệ này.Tính phương sai thời gian mà sinh viên dành cho người yêu trong một ngày và ước lượng</p>
+                                    <div class="box-list-blog-item-content-icon">
+                                        <div class="box-list-blog-item-content-icon-it">
+                                                <i class="far fa-heart"></i> <span>0</span> Love
+                                        </div>
+                                        <div class="box-list-blog-item-content-icon-it">
+                                            <i class="far fa-comments"></i> <span>0</span> Comment
+                                        </div>
+                                        <div class="box-list-blog-item-content-icon-it">
+                                                <i class="fas fa-share-alt"></i> <span>0</span> Share
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="box-list-blog-item">
+                            <div class="box-list-blog-item-img">
+                                <img src="/assets/img/hinh-nen-thien-nhien.jpg" alt="">
+                            </div>
+                            <div class="box-list-blog-main">
+                                <div class="box-list-blog-title">
+                                    <h4 class="box-list-blog-header">Anh Thien nhien</h4>
+                                    <div class="box-list-blog-right">
+                                        <div class="box-list-blog-right-edit">
+                                            <a class="box-list-blog-right-icon">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-list-blog-item-content">
+                                    <p class="box-list-blog-item-text">Tính tỷ lệ sinh viên có người yêu và ước lượng khoảng tin cậy 95 cho tỷ lệ này.Tính phương sai thời gian mà sinh viên dành cho người yêu trong một ngày và ước lượng</p>
+                                    <div class="box-list-blog-item-content-icon">
+                                        <div class="box-list-blog-item-content-icon-it">
+                                                <i class="far fa-heart"></i> <span>0</span> Love
+                                        </div>
+                                        <div class="box-list-blog-item-content-icon-it">
+                                            <i class="far fa-comments"></i> <span>0</span> Comment
+                                        </div>
+                                        <div class="box-list-blog-item-content-icon-it">
+                                                <i class="fas fa-share-alt"></i> <span>0</span> Share
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="box-list-blog-item">
+                            <div class="box-list-blog-item-img">
+                                <img src="/assets/img/hinh-nen-thien-nhien.jpg" alt="">
+                            </div>
+                            <div class="box-list-blog-main">
+                                <div class="box-list-blog-title">
+                                    <h4 class="box-list-blog-header">Anh Thien nhien</h4>
+                                    <div class="box-list-blog-right">
+                                        <div class="box-list-blog-right-edit">
+                                            <a class="box-list-blog-right-icon">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-list-blog-item-content">
+                                    <p class="box-list-blog-item-text">Tính tỷ lệ sinh viên có người yêu và ước lượng khoảng tin cậy 95 cho tỷ lệ này.Tính phương sai thời gian mà sinh viên dành cho người yêu trong một ngày và ước lượng</p>
+                                    <div class="box-list-blog-item-content-icon">
+                                        <div class="box-list-blog-item-content-icon-it">
+                                                <i class="far fa-heart"></i> <span>0</span> Love
+                                        </div>
+                                        <div class="box-list-blog-item-content-icon-it">
+                                            <i class="far fa-comments"></i> <span>0</span> Comment
+                                        </div>
+                                        <div class="box-list-blog-item-content-icon-it">
+                                                <i class="fas fa-share-alt"></i> <span>0</span> Share
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="row footer-body-box">
+                <div class="col-xl-4">
+                    <div class="footer-body">
+                        <img src="/assets/img/logo-new.jpg" alt="" class="footer-body-img">
+                        
+                        <div class="footer-contact-list">
+                            <a href="" class="footer-contact-link footer-contact-link-fb">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="" class="footer-contact-link footer-contact-link-yt">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="" class="footer-contact-link footer-contact-link-ig">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <h4 class="footer-body-header">Về Gody</h4>
+                        <ul class="footer-body-list">
+                        <p class="footer-item-link">CÔNG TY CỔ PHẦN GODY</p>
+                        <p class="footer-item-link">2/24 Đoàn Thị Điểm, Phường 01, Quận Phú Nhuận, Thành phố Hồ Chí Minh, Việt Nam</p>
+                        </ul>
+                    
+                </div>
+                <div class="col-xl-4">
+                    <h4 class="footer-body-header">Liên hệ</h4>
+                        <ul class="footer-body-list">
+                            <p class="footer-item-link">Hotline: 0985.172.470</p>
+                        <p class="footer-item-link">Email: hi@gody.vn</p>  
+                        </ul>
+                    
+                </div>
+                
+                
+            </div>
+          
+            
+        </div>
+        
+        <div class="container-fluid footer-end">
+            © Toàn bộ bản quyền thuộc Nhóm 1. Cấm sao chép dưới mọi hình thức.
+        </div>
+    </footer> 
+    
+</body>
+</html>
